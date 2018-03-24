@@ -2,15 +2,15 @@
 "  Neovim "
 """""""""""
 
-set runtimepath+=/Users/wholland/.config/nvim/bundle/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.config/nvim/bundle/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/Users/wholland/.config/nvim/bundle')
+if dein#load_state('~/.config/nvim/bundle')
   " Init
-  call dein#begin('/Users/wholland/.config/nvim/bundle')
+  call dein#begin('~/.config/nvim/bundle')
 
   " Let dein manage dein
-  call dein#add('/Users/wholland/.config/nvim/bundle/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.config/nvim/bundle/repos/github.com/Shougo/dein.vim')
 
   " Plugins
   call dein#add('vim-scripts/a.vim')
