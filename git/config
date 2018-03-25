@@ -1,0 +1,20 @@
+[user]
+	name = Wes Holland
+	email = wholland@capsher.com
+[color]
+	ui = auto
+[core]
+	editor = nvim
+	pager = less -iXFR
+[alias]
+    clean = clean -d -f
+    graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+    precommit = diff --cached --diff-algorithm=minimal -w
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    meonly = log --first-parent --no-merges
+[diff]
+	tool = bc3
+[difftool]
+	prompt = false
+[merge]
+	tool = bc3
