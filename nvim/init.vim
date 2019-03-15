@@ -33,6 +33,9 @@ if dein#load_state('~/.config/nvim/bundle')
   call dein#add('mileszs/ack.vim')
   call dein#add('dag/vim-fish')
 
+  call dein#add('godlygeek/tabular')
+  call dein#add('rust-lang/rust.vim')
+
   "TODO Add guards for unsupported platforms
   " call dein#add('Valloric/YouCompleteMe')
 
