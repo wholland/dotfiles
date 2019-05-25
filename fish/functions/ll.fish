@@ -1,4 +1,4 @@
 function ll
-    colorls -l --git $argv
+    command exa --long --git $argv
 end
 

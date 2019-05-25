@@ -123,10 +123,10 @@ let g:ctrlp_root_markers = ['tags']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " Plugin - Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:snips_author="Wes Holland""
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:snips_author="Wes Holland""
 
 " Plugin - YouCompleteMe
 " let g:ycm_auto_trigger = 1
