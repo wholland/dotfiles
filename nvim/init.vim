@@ -22,9 +22,9 @@ if dein#load_state('~/.config/nvim/bundle')
   call dein#add('tpope/vim-repeat')
   call dein#add('dbakker/vim-projectroot')
   call dein#add('kien/ctrlp.vim')
-  call dein#add('ervandew/supertab')
-  call dein#add('SirVer/ultisnips')
-  call dein#add('honza/vim-snippets')
+  " call dein#add('ervandew/supertab')
+  " call dein#add('SirVer/ultisnips')
+  " call dein#add('honza/vim-snippets')
 
   call dein#add('morhetz/gruvbox')
   call dein#add('itchyny/lightline.vim')
@@ -36,8 +36,25 @@ if dein#load_state('~/.config/nvim/bundle')
   call dein#add('godlygeek/tabular')
   call dein#add('rust-lang/rust.vim')
 
-  "TODO Add guards for unsupported platforms
-  " call dein#add('Valloric/YouCompleteMe')
+  call dein#add('mhinz/vim-startify')
+
+  " Completions
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+      call dein#add('roxma/nvim-yarp')
+      call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  let g:deoplete#enable_at_startup = 1
+
+  " LSP (Lanugage features)
+  call dein#add('prabirshrestha/async.vim')
+  call dein#add('prabirshrestha/vim-lsp')
+
+  " Snippets
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('thomasfaingnaert/vim-lsp-snippets')
+  call dein#add('thomasfaingnaert/vim-lsp-neosnippet')
 
   " cleanup
   call dein#end()
@@ -87,6 +104,7 @@ nnoremap <silent> <s-F6> :CtrlPMRU<cr>
 nnoremap <silent> <c-F6> :CtrlPBuffer<cr>
 nnoremap <silent> <F7> :ProjectRootExe NERDTreeToggle<cr>
 nnoremap <silent> <s-F7> :ProjectRootExe NERDTreeFind<cr>
+
 
 " Custom Commands
 command TrimR %s/\s\+$//
@@ -145,3 +163,34 @@ endif
 
 " Fish shell
 au BufNewFile,BufRead *.fish set filetype=fish
+
+" LSP
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
+
+" omnifuncs
+augroup omnifuncs
+  autocmd!
+  autocmd FileType rust setlocal omnifunc=lsp#complete 
+augroup end
+
+inoremap <C-space> <C-x><C-o>
+
+" Snippets
+imap <C-i>     <Plug>(neosnippet_expand_or_jump)
+smap <C-i>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-i>     <Plug>(neosnippet_expand_target)
+
+imap <expr> <Tab> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
