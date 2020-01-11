@@ -1,4 +1,4 @@
-eval (python -m virtualfish)
+eval (python3 -m virtualfish)
 
 set -gx PATH $PATH $HOME/.cargo/bin
 
